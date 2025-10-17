@@ -42,26 +42,26 @@
             <h3 class="card-title text-center mb-4 fw-bold text-success">Yeni Üyelik</h3>
             <p class="text-center text-muted mb-4">Hemen bir hesap oluşturun ve başlayın</p>
 
-            <form action="#" method="post">
-                
+            <form action="/uye-kaydet" method="post">
+                @csrf
                 <div class="mb-3">
                     <label for="name" class="form-label">Adınız Soyadınız</label>
-                    <input type="text" class="form-control" id="name" placeholder="Ad Soyad" required>
+                    <input type="text" class="form-control" id="name" name="adsoyad" placeholder="Ad Soyad" required>
                 </div>
 
                 <div class="mb-3">
                     <label for="email" class="form-label">E-posta Adresi</label>
-                    <input type="email" class="form-control" id="email" placeholder="ornek@mail.com" required>
+                    <input type="email" class="form-control" id="email" name="eposta" placeholder="ornek@mail.com" required>
                 </div>
 
                 <div class="mb-3">
                     <label for="password" class="form-label">Şifre</label>
-                    <input type="password" class="form-control" id="password" placeholder="En az 8 karakter" required>
+                    <input type="password" class="form-control" id="password" name="parola" placeholder="En az 8 karakter" required>
                 </div>
 
                 <div class="mb-4">
                     <label for="password_confirmation" class="form-label">Şifre Tekrar</label>
-                    <input type="password" class="form-control" id="password_confirmation" placeholder="Şifreyi doğrulayın" required>
+                    <input type="password" class="form-control" id="password_confirmation" name="parolatekrar" placeholder="Şifreyi doğrulayın" required>
                 </div>
 
                 <div class="d-grid">

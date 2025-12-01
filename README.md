@@ -29,4 +29,4 @@ php artisan key:generate
 
 ## Lisans
 
-Laravel framework'ü [MIT lisansı] (https://opensource.org/licenses/MIT) altında lisanslanmış açık kaynaklı bir yazılımdır.
+Laravel framework'ü [MIT lisansı](https://opensource.org/licenses/MIT) altında lisanslanmış açık kaynaklı bir yazılımdır.

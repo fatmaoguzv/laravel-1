@@ -27,6 +27,18 @@ Uygulama anahtarını üret:
 php artisan key:generate
 ```
 
+Session tablosu üret:
+
+```
+php artisan session:table
+```
+
+Tabloyu veri tabanına aktar:
+
+```
+php artisan migrate
+```
+
 ## Lisans
 
 Laravel framework'ü [MIT lisansı](https://opensource.org/licenses/MIT) altında lisanslanmış açık kaynaklı bir yazılımdır.

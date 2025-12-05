@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Veri;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Models\Uye;
@@ -25,7 +26,9 @@ class Kullanici extends Controller
 
     public function anasayfaGoster()
     {
-        return view('index');
+        // $veriler = Veri::all(); // Tüm kayıtları çek
+        $veriler = Veri::latest()->get();
+        return view('index', compact('veriler')); // Bu sayfaya Veri modelindeki tüm kayıtları gönder
     }
 
     public function bilgilerimGoster()

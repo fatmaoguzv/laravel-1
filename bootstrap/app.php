@@ -16,6 +16,7 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->alias([
             'oturumKontrol' => Kontrol::class,
             'tarihkontrol' => TarihKontrol::class,
+            'yetkiKontrol' => \App\Http\Middleware\YetkiKontrol::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {

@@ -48,21 +48,24 @@
             <h3 class="card-title text-center mb-4 fw-bold text-primary">Proje Adı</h3>
             <p class="text-center text-muted mb-4">Oturum açmak için bilgilerinizi girin</p>
 
-            <form action="#" method="post">
-                
+            <form action="/giris-yap" method="post">
+                @csrf
                 <div class="mb-3">
                     <label for="email" class="form-label">E-posta Adresi</label>
-                    <input type="email" class="form-control" id="email" placeholder="ornek@mail.com" required>
+                    <input type="email" class="form-control" id="email" name="e_posta" placeholder="ornek@mail.com" required>
+                    @error('email')
+                        <div class="text-danger small">{{ $message }}</div>
+                    @enderror
                 </div>
 
                 <div class="mb-3">
                     <label for="password" class="form-label">Şifre</label>
-                    <input type="password" class="form-control" id="password" placeholder="••••••••" required>
+                    <input type="password" class="form-control" id="password" name="password" placeholder="••••••••" required>
                 </div>
 
                 <div class="d-flex justify-content-between align-items-center mb-4">
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="rememberMe">
+                        <input class="form-check-input" type="checkbox" id="rememberMe" name="remember">
                         <label class="form-check-label" for="rememberMe">
                             Beni Hatırla
                         </label>
@@ -82,6 +85,10 @@
             </form>
             <div class="text-center mt-4">
                 <p class="text-muted small mb-0">Hesabın yok mu? <a href="/uye-ol" class="text-decoration-none fw-bold">Kayıt Ol</a></p>
+                <form action="/cikis-yap" method="POST" class="d-inline">
+                     @csrf
+                     <button type="submit" class="btn btn-link text-decoration-none text-muted small">Çıkış Yap</button>
+                </form>
             </div>
         </div>
     </div>

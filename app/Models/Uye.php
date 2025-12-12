@@ -2,10 +2,13 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 
-class Uye extends Model
+class Uye extends Authenticatable
 {
+    use Notifiable;
+
     protected $table = 'uyeler';
 
     protected $fillable = [
@@ -15,4 +18,14 @@ class Uye extends Model
         'parola',
         'yetki'
     ];
+
+    /**
+     * Get the password for the user.
+     *
+     * @return string
+     */
+    public function getAuthPassword()
+    {
+        return $this->parola;
+    }
 }

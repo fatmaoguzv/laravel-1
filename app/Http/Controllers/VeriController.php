@@ -76,4 +76,11 @@ class VeriController extends Controller
         $veri->delete();
         return redirect('/urunler')->with('success', 'Veri başarıyla silindi.');
     }
+
+    public function goster($id, $slug = null)
+    {
+        $veri = Veri::findOrFail($id);
+        $veri->baslik = $veri->baslik;
+        return view('icerik', compact('veri'));
+    }
 }

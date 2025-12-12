@@ -62,6 +62,7 @@
                     <div class="collapse navbar-collapse bg-white" id="navbarCollapse">
                         <div class="navbar-nav mx-auto">
                             <a href="/" class="nav-item nav-link">Ana Sayfa</a>
+                            @if(Auth::check())
                             <div class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Yönetim Paneli</a>
                                 <div class="dropdown-menu m-0 bg-secondary rounded-0">
@@ -69,6 +70,7 @@
                                     <a href="/urun-ekle" class="dropdown-item">Ürün Ekle</a>
                                 </div>
                             </div>
+                            @endif
                         </div>
                         <div class="d-flex m-3 me-0">
                             <a href="/giris-yap" class="my-auto">

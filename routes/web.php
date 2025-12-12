@@ -7,21 +7,31 @@ use App\Http\Controllers\VeriController;
 
 Route::get('/', [Kullanici::class, 'anasayfaGoster'])->middleware('tarihkontrol');
 
-Route::get('/giris-yap', [Kullanici::class, 'girisYap']);
+Route::get('/giris-yap', [Kullanici::class, 'girisYap'])->name('login');
+Route::post('/giris-yap', [Kullanici::class, 'girisYapIslemi']);
 Route::get('/uye-ol', [Kullanici::class, 'uyeOl']);
 Route::post('/uye-kaydet', [Kullanici::class, 'uyeKaydet']);
 Route::get('/magaza', [Kullanici::class, 'magazaGoster']);
 
-Route::get('/urun-ekle', [VeriController::class, 'create']);
-Route::post('/urun-ekle', [VeriController::class, 'store']);
+Route::group(['middleware' => 'yetkiKontrol'], function () {
+    Route::get('/urun-ekle', [VeriController::class, 'create']);
+    Route::post('/urun-ekle', [VeriController::class, 'store']);
+    
+    Route::get('/urunler', [VeriController::class, 'index']);
+    Route::get('/urun-guncelle/{id}', [VeriController::class, 'edit']);
+    Route::post('/urun-guncelle/{id}', [VeriController::class, 'update']);
+    Route::get('/urun-sil/{id}', [VeriController::class, 'destroy']);
+});
 
-Route::get('/urunler', [VeriController::class, 'index']);
-Route::get('/urun-guncelle/{id}', [VeriController::class, 'edit']);
-Route::post('/urun-guncelle/{id}', [VeriController::class, 'update']);
-Route::get('/urun-sil/{id}', [VeriController::class, 'destroy']);
+Route::get('/icerik/{id}/{slug?}', [VeriController::class, 'goster']);
 
 Route::get('/sehir/{id}', [Sehir::class, 'goster'])->where('id', '[0-9]+');
 
 Route::get('/topla/{sayi1}/{sayi2}', [Islem::class, 'topla']);
+
+Route::post('/cikis-yap', function () {
+    Auth::logout();
+    return redirect('/');
+});
 
 Route::get('/bilgilerim', [Kullanici::class, 'bilgilerimGoster'])->middleware('oturumKontrol');
